@@ -1,10 +1,12 @@
-package com.hotstrip.code.design.award.bad;
+package com.hotstrip.code.design.award.good;
 
 import com.hotstrip.code.design.award.common.AwardReq;
 import com.hotstrip.code.design.award.common.AwardRes;
 import com.hotstrip.code.design.award.common.card.IQiYiCardService;
 import com.hotstrip.code.design.award.common.coupon.CouponService;
 import com.hotstrip.code.design.award.common.goods.GoodsService;
+import com.hotstrip.code.design.award.good.factory.AwardFactory;
+import com.hotstrip.code.design.award.good.factory.award.IAwardService;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -26,16 +28,12 @@ public class AwardController {
             return AwardRes.error(100, "没有合适的奖品");
         }
         // 判断奖品类型
-        if (awardReq.getAwardType() == 1) {
-            CouponService couponService = new CouponService();
-            return couponService.sendCoupon(awardReq.getUserId(), awardReq.getPhone(), awardReq.getBizId());
-        } else if (awardReq.getAwardType() == 2) {
-            GoodsService goodsService = new GoodsService();
-            return goodsService.deliveryGoods(awardReq.getUserId(), awardReq.getPhone(), awardReq.getBizId());
-        } else if (awardReq.getAwardType() == 3) {
-            IQiYiCardService iQiYiCardService = new IQiYiCardService();
-            return iQiYiCardService.sendvirtualCard(awardReq.getUserId(), awardReq.getPhone(), awardReq.getBizId());
+        AwardFactory awardFactory = new AwardFactory();
+        IAwardService awardService = awardFactory.getAwardService(awardReq.getAwardType());
+        if (null == awardService) {
+            return AwardRes.error(100, "没有合适的奖品");
         }
-        return AwardRes.error(100, "没有合适的奖品");
+        return awardService.awardToUser(awardReq.getUserId(), awardReq.getPhone(), awardReq.getBizId());
     }
+
 }

@@ -8,18 +8,18 @@ import java.util.Date;
 
 /**
  * @author hotstrip
- * 账户信息
+ * 内部订单 MQ
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Account {
-    // 开户编号
-    private String number;
-    // 开户地址
-    private String address;
-    // 开户时间
-    private Date accountDate;
-    // 开户描述
-    private String desc;
+public class OrderMQ {
+    // 用户 ID
+    private String uid;
+    // 商品编号
+    private String sku;
+    // 订单 ID
+    private String orderId;
+    // 下单时间
+    private Date createOrderTime;
 }

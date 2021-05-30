@@ -1,4 +1,4 @@
-package com.hotstrip.code.design.adapter.good;
+package com.hotstrip.code.design.adapter.good.service;
 
 /**
  * @author hotstrip

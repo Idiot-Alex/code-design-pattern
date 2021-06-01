@@ -1,6 +1,5 @@
 package com.hotstrip.code.design.bridge.good.channel;
 
-import com.hotstrip.code.design.bridge.bad.Paycontroller;
 import com.hotstrip.code.design.bridge.good.model.PayFaceMode;
 import com.hotstrip.code.design.bridge.good.model.PayFingerprintMode;
 import junit.framework.TestCase;

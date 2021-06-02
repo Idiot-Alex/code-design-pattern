@@ -8,7 +8,6 @@ import com.hotstrip.code.design.good.model.vo.TreeNodeLink;
 import com.hotstrip.code.design.good.model.vo.TreeRoot;
 import com.hotstrip.code.design.good.service.IEngine;
 import com.hotstrip.code.design.good.service.impl.TreeEngineHandle;
-import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-public class ApiTest extends TestCase {
+public class ApiTest {
 
     private TreeRich treeRich;
 

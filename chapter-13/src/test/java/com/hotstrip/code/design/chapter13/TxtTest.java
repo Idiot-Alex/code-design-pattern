@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.io.*;
+import java.security.SecureRandom;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
@@ -39,4 +40,14 @@ public class TxtTest {
 //            index.getAndIncrement();
 //        });
     }
+
+    @Test
+    public void test1() {
+        SecureRandom random = new SecureRandom();
+        for (int i=0; i<100; i++) {
+            int machineId = (Math.abs(random.nextInt()) % 8) + 3;
+            log.info("machineId: {}", machineId);
+        }
+    }
+
 }

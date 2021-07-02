@@ -100,6 +100,9 @@ public class AESTest {
         if(checkData(data) || isNumeric(data) || isCardId(data)){
             return data;
         }
+        if (data.contains("*")) {
+            return data;
+        }
         //原数据
         byte[] dataBase64 = Base64.decodeBase64(data);
         //还原秘钥

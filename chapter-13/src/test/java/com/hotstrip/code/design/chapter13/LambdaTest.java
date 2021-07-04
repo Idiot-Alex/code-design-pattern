@@ -3,14 +3,12 @@ package com.hotstrip.code.design.chapter13;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * Lambda 表达式测试类
@@ -89,5 +87,54 @@ public class LambdaTest {
 
         // 输出结果
         list.forEach(System.out::println);
+    }
+
+    @Test
+    public void test6() {
+        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+
+        // 获取对应的平方数
+        List<Integer> squaresList = numbers.stream()
+                .map( i -> i*i)
+                .collect(Collectors.toList());
+
+        squaresList.forEach(System.out::println);
+    }
+
+    @Test
+    public void test7() {
+        List<String> strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+        // 获取空字符串的数量
+        long count = strings.stream()
+                .filter(String::isEmpty)
+                .count();
+        log.info("count: {}", count);
+    }
+
+    @Test
+    public void test8() {
+        List<String>strings = Arrays.asList("abc", "", "bc", "efg", "abcd","", "jkl");
+        List<String> filtered = strings.stream()
+                .filter(string -> !string.isEmpty())
+                .collect(Collectors.toList());
+        log.info("筛选列表: {}", filtered.toString());
+
+        String mergedString = strings.stream()
+                .filter(string -> !string.isEmpty())
+                .collect(Collectors.joining(", "));
+        log.info("合并字符串: {}", mergedString);
+    }
+
+    @Test
+    public void test9() {
+        List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        IntSummaryStatistics stats = numbers.stream()
+                .mapToInt((x) -> x)
+                .summaryStatistics();
+
+        log.info("列表中最大的数: {}", stats.getMax());
+        log.info("列表中最小的数: {}", stats.getMin());
+        log.info("所有数之和: {}", stats.getSum());
+        log.info("平均数: {}", stats.getAverage());
     }
 }

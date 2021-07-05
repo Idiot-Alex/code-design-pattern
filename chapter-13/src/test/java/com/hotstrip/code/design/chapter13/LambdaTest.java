@@ -1,5 +1,6 @@
 package com.hotstrip.code.design.chapter13;
 
+import com.hotstrip.code.design.chapter13.base.domain.UserInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -136,5 +137,13 @@ public class LambdaTest {
         log.info("列表中最小的数: {}", stats.getMin());
         log.info("所有数之和: {}", stats.getSum());
         log.info("平均数: {}", stats.getAverage());
+    }
+
+    @Test
+    public void test10 () {
+        Optional<UserInfo> optional = Optional.empty();
+        optional.ifPresent(userInfo -> {
+            // do action
+        });
     }
 }

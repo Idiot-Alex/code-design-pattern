@@ -1,0 +1,5 @@
+itstack:
+  door:
+    enabled: true
+    # 白名单用户 ID
+    userStr: 1001,aaaa,cccc

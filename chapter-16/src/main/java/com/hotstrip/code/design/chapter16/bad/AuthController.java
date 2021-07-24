@@ -38,7 +38,7 @@ public class AuthController {
                 && authDate.before(simpleDateFormat.parse("2021-07-25 00:00:00"))) {
             date = AuthService.queryAuthInfo("10002", orderId);
             if (null == authDate) {
-                return new AuthInfo("0001", "单号： ", orderId, " 状态，待二级负责人审批", "张经理");
+                return new AuthInfo("0001", "单号： ", orderId, " 状态，待一级负责人审批", "张经理");
             }
         }
 
